@@ -1,38 +1,37 @@
-🏎️ F1 Management API
-Esta é uma API REST desenvolvida para gerenciar equipes e pilotos do universo da Fórmula 1. 
-O projeto permite realizar o cadastro completo (CRUD) de escuderias e seus respectivos competidores, mantendo o relacionamento entre eles.
+🏎️ F1 Management API (Em Desenvolvimento 🚧)
+Esta é uma API REST desenvolvida para gerenciar equipes e pilotos do universo da Fórmula 1. O projeto foca em aplicar conceitos de Relacionamento entre Entidades (ManyToOne) e padrões de projeto como DTO (Data Transfer Object) e Service Layer.
 
 🚀 Tecnologias Utilizadas
-Java 17 ou superior.
+Java 17
 
-Spring Boot 3: Framework base da aplicação.
+Spring Boot 3
 
-Spring Data JPA: Para persistência de dados e integração com o banco.
+Spring Data JPA
 
-H2 Database / MySQL: Banco de dados para armazenamento das informações.
+H2 Database: Banco de dados em memória para testes rápidos.
 
 Maven: Gerenciador de dependências.
 
-Postman: Para testes dos endpoints.
+🛠️ Status das Funcionalidades
+Equipes (Teams) — ✅ Concluído
+[x] Cadastro de equipes (Nome, País, Motor).
 
-🛠️ Funcionalidades
-Equipes (Teams)
-Cadastrar uma nova equipe (Nome, País, Motor).
+[x] Listagem completa.
 
-Listar todas as equipes.
+[x] Atualização de dados.
 
-Atualizar dados de uma equipe existente.
+[x] Deleção com tratamento de erro.
 
-Remover uma equipe do sistema.
+Pilotos (Drivers) — 🏗️ Em progresso
+[x] Cadastro de piloto associado a uma equipe existente.
 
-Pilotos (Drivers)
-Cadastrar um piloto associado a uma equipe.
+[x] Listagem de pilotos.
 
-Listar todos os pilotos cadastrados.
+[x] Atualização de informações básicas.
 
-Atualizar informações do piloto (Nome, Nacionalidade, Número).
+[x] Deleção de registros.
 
-Remover um piloto.
+[ ] Próximo passo: Validação de ID de equipe inexistente no cadastro.
 
 📋 Como Executar o Projeto
 Clonar o repositório:
@@ -41,18 +40,12 @@ Bash
 git clone https://github.com/seu-usuario/f1-management-api.git
 Importar no IntelliJ:
 
-Abra o IntelliJ IDEA.
+Abra o IntelliJ, vá em File > Open e selecione a pasta.
 
-Vá em File > Open e selecione a pasta do projeto.
+Configuração do Banco:
 
-Aguarde o Maven baixar as dependências.
+O projeto utiliza H2 Database. Ao rodar, o console do banco fica disponível em http://localhost:8080/h2-console.
 
-Rodar a aplicação:
+Execução:
 
-Localize a classe principal (com a anotação @SpringBootApplication).
-
-Clique com o botão direito e selecione Run.
-
-Testar os Endpoints:
-
-A API estará disponível em http://localhost:8080.
+Execute a classe ManagementApplication.
