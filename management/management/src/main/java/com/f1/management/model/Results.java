@@ -22,21 +22,47 @@ public class Results {
     private Integer position;
     private Double pointsEarned;
 
-    public Results() {}
+    public Results() {
+    }
 
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public Races getRace() { return race; }
-    public void setRace(Races race) { this.race = race; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Driver getDriver() { return driver; }
-    public void setDriver(Driver driver) { this.driver = driver; }
+    public Races getRace() {
+        return race;
+    }
 
-    public Integer getPosition() { return position; }
-    public void setPosition(Integer position) { this.position = position; }
+    public void setRace(Races race) {
+        this.race = race;
+    }
 
-    public Double getPointsEarned() { return pointsEarned; }
-    public void setPointsEarned(Double pointsEarned) { this.pointsEarned = pointsEarned; }
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Double getPointsEarned() {
+        return pointsEarned;
+    }
+
+    public void setPointsEarned(Double pointsEarned) {
+        this.pointsEarned = pointsEarned;
+    }
 }

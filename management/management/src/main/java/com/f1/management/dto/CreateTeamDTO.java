@@ -8,9 +8,14 @@ public class CreateTeamDTO {
 
     // Getters são fundamentais aqui!
     public String getName() {
-        return name; }
-    public String getCountry()
-    { return country; }
-    public String getEngine()
-    { return engine; }
+        return name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getEngine() {
+        return engine;
+    }
 }
