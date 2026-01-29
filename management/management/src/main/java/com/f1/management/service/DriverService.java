@@ -5,7 +5,7 @@ import com.f1.management.repository.DriverRepository;
 import com.f1.management.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
+
 
 import java.util.List;
 
@@ -37,9 +37,12 @@ public class DriverService {
     }
 
     public void deleteDriver(Long id) {
+        //  O '!' (não) inverte a lógica: "Se NÃO for verdade que...".
+        //  'driverRepository.existsById(id)' pergunta ao banco se o ID existe.
         if (!driverRepository.existsById(id)) {
             throw new RuntimeException("erro: esse Id não existe.");
         }
         driverRepository.deleteById(id);
+        //  O 'deleteById' apaga o registro do banco de dados definitivamente.
     }
 }
