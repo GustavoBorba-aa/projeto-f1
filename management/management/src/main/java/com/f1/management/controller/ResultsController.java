@@ -21,4 +21,20 @@ public class ResultsController {
         Results savedResults = resultsService.saveFromDto(dto);
         return ResponseEntity.ok(savedResults);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Results>> listAll() {
+        return ResponseEntity.ok(resultsService.findAll());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Results> update(@PathVariable Long id, @RequestBody CreateResultsDTO dto) {
+        Results updateResults = resultsService.updateResults(id, dto);
+        return ResponseEntity.noContent().build();
+    }
+   @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id){
+        resultsService.deleteResults(id);
+        return ResponseEntity.noContent().build();
+   }
 }

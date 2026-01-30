@@ -7,20 +7,24 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String nationality;
+
+
+    @Column(name = "number_car", nullable = false)
     private int number;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
-    // (obrigatório para o JPA)
+    // Construtor padrão (obrigatório para o JPA)
     public Driver() {
-
     }
 
-    // Construtor completo (útil para o banco carregar dados existentes)
+
     public Driver(Long id, String name, String nationality, int number, Team team) {
         this.id = id;
         this.name = name;
@@ -29,14 +33,12 @@ public class Driver {
         this.team = team;
     }
 
-    // NOVO CONSTRUTOR (Para você usar no Controller ao criar novos pilotos)
     public Driver(String name, String nationality, int number, Team team) {
         this.name = name;
         this.nationality = nationality;
         this.number = number;
         this.team = team;
     }
-
 
     public Long getId() {
         return id;
@@ -71,6 +73,7 @@ public class Driver {
     }
 
     public Team getTeam() {
+
         return team;
     }
 

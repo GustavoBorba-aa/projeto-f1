@@ -26,14 +26,12 @@ public class ResultsService {
 
 
     public Results saveFromDto(CreateResultsDTO dto) {
-        // Busca as entidades reais pelos IDs vindos do DTO
         Races race = racesRepository.findById(dto.getRaceId())
                 .orElseThrow(() -> new RuntimeException("Corrida não encontrada com ID: " + dto.getRaceId()));
 
         Driver driver = driverRepository.findById(dto.getDriverId())
                 .orElseThrow(() -> new RuntimeException("Piloto não encontrado com ID: " + dto.getDriverId()));
 
-        // Mapeia os dados para a entidade Results
         Results results = new Results();
         results.setRace(race);
         results.setDriver(driver);
@@ -51,7 +49,6 @@ public class ResultsService {
         Results results = resultsRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Erro: esse resultado não existe: "));
 
-        // Se quiser mudar o piloto ou a corrida na atualização:
         Races race = racesRepository.findById(dto.getRaceId())
                 .orElseThrow(() -> new RuntimeException("Corrida não encontrada"));
         Driver driver = driverRepository.findById(dto.getDriverId())
