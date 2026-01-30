@@ -16,11 +16,9 @@ public class ResultsController {
     @Autowired
     private ResultsService resultsService;
 
-    // Rota para cadastrar um resultado (POST)
     @PostMapping
     public ResponseEntity<Results> create(@RequestBody CreateResultsDTO dto) {
         Results savedResults = resultsService.saveFromDto(dto);
         return ResponseEntity.ok(savedResults);
     }
-
 }

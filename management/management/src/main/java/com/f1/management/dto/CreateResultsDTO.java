@@ -9,8 +9,6 @@ public class CreateResultsDTO {
     public CreateResultsDTO() {
 
     }
-
-
     public Long getRaceId() {
         return raceId;
     }
