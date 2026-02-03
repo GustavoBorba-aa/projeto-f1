@@ -1,159 +1,54 @@
-🏎️ F1 Management API
+# 🏎️ F1 Management API
 
-Status do Projeto: ✅ MVP Concluído (em evolução com validações)
+> **Status do Projeto:** 🚧 Em Desenvolvimento (Fase de Implementação de Regras de Negócio)
 
-API REST desenvolvida em Java com Spring Boot para o gerenciamento de equipes e pilotos da Fórmula 1.
-O projeto foi criado com foco em aprendizado prático, aplicando conceitos usados no mercado como arquitetura em camadas, JPA/Hibernate, DTOs e boas práticas de backend.
+Esta é uma API REST robusta desenvolvida para gerenciar o ecossistema da Fórmula 1, permitindo o controle de equipes e pilotos. O projeto é focado em boas práticas de desenvolvimento backend, utilizando uma arquitetura organizada em camadas e padrões de projeto modernos.
 
-🎯 Objetivo do Projeto
+---
 
-Simular um sistema real de gerenciamento de dados da Fórmula 1, permitindo:
+## 🛠️ Tecnologias Utilizadas
 
-Cadastro e gerenciamento de equipes
+* **Java 17**
+* **Spring Boot 3**
+* **Spring Data JPA**: Persistência de dados e consultas facilitadas.
+* **PostgreSQL**: Banco de dados relacional para produção (via Docker).
+* **H2 Database**: Utilizado para testes rápidos em memória.
+* **Maven**: Gestão de dependências e build.
+* **Docker**: Containerização do banco de dados.
 
-Cadastro e gerenciamento de pilotos
+---
 
-Relacionamento entre entidades (Piloto → Equipe)
+## 🏗️ Arquitetura e Padrões
 
-Organização do código seguindo padrões profissionais
+O projeto segue a separação de responsabilidades para garantir manutenção e escalabilidade:
 
-Este projeto também serve como item de portfólio, demonstrando domínio de Spring Boot e API REST.
+* **Model/Entity**: Representação das tabelas do banco de dados (Relacionamento `@ManyToOne`).
+* **Repository**: Interface de comunicação com o banco de dados.
+* **Service**: Camada de lógica de negócio (onde as regras da F1 são aplicadas).
+* **Controller**: Exposição dos endpoints REST da API.
+* **DTO (Data Transfer Object)**: Segurança e controle no tráfego de dados entre as camadas.
 
-🚀 Tecnologias Utilizadas
+---
 
-Java 17
+## 📋 Status das Funcionalidades
 
-Spring Boot 3
+### **Equipes (Teams)** — ✅ Concluído
+- [x] Cadastro de equipes (Nome, País, Motor).
+- [x] Listagem completa de escuderias.
+- [x] Atualização de dados técnicos.
+- [x] Deleção com tratamento de integridade.
 
-Spring Web
+### **Pilotos (Drivers)** — 🏗️ Em progresso
+- [x] Cadastro de pilotos associados a uma equipe.
+- [x] Listagem de pilotos por ordem alfabética/número.
+- [x] Atualização de informações de carreira.
+- [ ] **Próximo passo:** Validação para impedir números duplicados no grid.
+- [ ] **Próximo passo:** Tratamento de exceção customizado para IDs inexistentes.
 
-Spring Data JPA
+---
 
-H2 Database (banco em memória para desenvolvimento e testes)
+## 🚀 Como Executar o Projeto
 
-Maven (gerenciamento de dependências)
-
-🧱 Arquitetura do Projeto
-
-O projeto segue o padrão de arquitetura em camadas, separando responsabilidades:
-
-controller  → Camada de entrada (API REST / HTTP)
-service     → Regras de negócio
-repository  → Acesso ao banco de dados
-model       → Entidades JPA
-dto         → Objetos de transferência de dados
-
-
-Essa abordagem facilita a manutenção, leitura do código e futuras evoluções.
-
-🛠️ Funcionalidades Implementadas
-🏎️ Equipes (Teams) — ✅ Concluído
-
-Cadastro de equipes (nome, país, motor)
-
-Listagem de todas as equipes
-
-Atualização de dados
-
-Remoção de equipes
-
-Tratamento de erro para registros inexistentes
-
-👨‍✈️ Pilotos (Drivers) — ✅ Concluído
-
-Cadastro de pilotos vinculados a uma equipe
-
-Listagem de pilotos
-
-Atualização de informações
-
-Remoção de pilotos
-
-🔜 Evolução próxima: validações de campos e verificação de ID de equipe inexistente.
-
-🌐 Endpoints Principais
-Equipes
-
-POST /teams → Criar equipe
-
-GET /teams → Listar equipes
-
-PUT /teams/{id} → Atualizar equipe
-
-DELETE /teams/{id} → Remover equipe
-
-Pilotos
-
-POST /drivers → Criar piloto
-
-GET /drivers → Listar pilotos
-
-PUT /drivers/{id} → Atualizar piloto
-
-DELETE /drivers/{id} → Remover piloto
-
-As requisições e respostas utilizam o formato JSON.
-
-📋 Como Executar o Projeto
-1️⃣ Clonar o repositório
-git clone https://github.com/seu-usuario/f1-management-api.git
-
-2️⃣ Acessar o diretório
-cd f1-management-api
-
-3️⃣ Executar o projeto
-./mvnw spring-boot:run
-
-
-Ou execute diretamente pela IDE (IntelliJ, Eclipse, etc.).
-
-🗄️ Banco de Dados H2
-
-Console disponível em:
-
-http://localhost:8080/h2-console
-
-
-Configurações padrão:
-
-JDBC URL: jdbc:h2:mem:testdb
-
-Usuário: sa
-
-Senha: (em branco)
-
-🧪 Testes da API
-
-A API pode ser testada utilizando:
-
-Postman
-
-Insomnia
-
-HTTP Client da IDE
-
-🚀 Próximas Evoluções Planejadas
-
-Validações com @NotNull, @NotBlank, @Size
-
-Exception Handler global (@ControllerAdvice)
-
-DTOs de resposta
-
-Paginação com Pageable
-
-Versionamento da API (/api/v1)
-
-Migração para PostgreSQL com Docker
-
-Autenticação (JWT) em versões futuras
-
-📚 Aprendizados com o Projeto
-
-✔️ API REST com Spring Boot
-✔️ Arquitetura em camadas
-✔️ JPA / Hibernate
-✔️ Relacionamento entre entidades
-✔️ DTOs e boas práticas
-✔️ Organização de código profissional
-✔️ Projeto sólido para portfólio
+1. **Clonar o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/f1-management-api.git](https://github.com/seu-usuario/f1-management-api.git)
