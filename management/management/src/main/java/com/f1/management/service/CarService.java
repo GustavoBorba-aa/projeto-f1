@@ -1,8 +1,10 @@
 package com.f1.management.service;
 
-
+import com.f1.management.dto.CreateCarDTO;
 import com.f1.management.model.Car;
+import com.f1.management.model.Team;
 import com.f1.management.repository.CarRepository;
+import com.f1.management.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,17 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
-    public Car saveCar(Car car) {
+    @Autowired
+    private TeamRepository teamRepository;
+
+    public Car saveCar(CreateCarDTO dto) {
+        Team team = teamRepository.findById(dto.getTeamId())
+                .orElseThrow(() -> new RuntimeException("Equipe não encontrada!"));
+
+        Car car = new Car();
+        car.setModelCar(dto.getModelCar());
+        car.setTeam(team);
+
         return carRepository.save(car);
     }
 
@@ -22,11 +34,17 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Car updateCar(Long id, Car carDetails) {
+    // Método corrigido para aceitar CreateCarDTO
+    public Car updateCar(Long id, CreateCarDTO dto) {
         Car car = carRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Esse Carro não existe"));
-        car.setModelCar(carDetails.getModelCar());
-        car.setTeam(carDetails.getTeam());
+
+        // Busca a equipe pelo ID que vem no DTO
+        Team team = teamRepository.findById(dto.getTeamId())
+                .orElseThrow(() -> new RuntimeException("Equipe não encontrada!"));
+
+        car.setModelCar(dto.getModelCar());
+        car.setTeam(team);
 
         return carRepository.save(car);
     }

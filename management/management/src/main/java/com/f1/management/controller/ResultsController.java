@@ -33,7 +33,7 @@ public class ResultsController {
         return ResponseEntity.noContent().build();
     }
    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         resultsService.deleteResults(id);
         return ResponseEntity.noContent().build();
    }

@@ -1,47 +1,20 @@
-package com.f1.management.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+package com.f1.management.dto;
 
 import java.time.LocalDate;
 
-@Entity
-public class Races {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CreateRacesDTO {
     private String nameCircuit;
     private String grandPrixName;
     private LocalDate raceDate;
 
-    public Races() {
-
+    public CreateRacesDTO() {
     }
 
-    public Races(Long id, String nameCircuit, String grandPrixName, LocalDate raceDate) {
-        this.id = id;
+    public CreateRacesDTO(String nameCircuit, String grandPrixName, LocalDate raceDate) {
         this.nameCircuit = nameCircuit;
         this.grandPrixName = grandPrixName;
         this.raceDate = raceDate;
     }
-
-    public Races(String nameCircuit, String grandPrixName, LocalDate raceDate) {
-        this.nameCircuit = nameCircuit;
-        this.grandPrixName = grandPrixName;
-        this.raceDate = raceDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNameCircuit() {
         return nameCircuit;
     }
