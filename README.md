@@ -47,7 +47,7 @@ O projeto foi construído seguindo o padrão de **arquitetura em camadas** para 
 ### **Resultados (Results)** — ✅ Concluído
 - Registro da performance de cada piloto por corrida.
 - Atribuição de pontos e registro de volta mais rápida.
-- **Próximo passo:** Implementar o cálculo automático do ranking do campeonato.
+
 
 ---
 
