@@ -17,7 +17,7 @@ Relacionamento entre entidades (Piloto → Equipe)
 
 Organização do código seguindo padrões profissionais
 
-Este projeto também serve como item de portfólio para demonstrar domínio de Spring Boot e API REST.
+Este projeto também serve como item de portfólio, demonstrando domínio de Spring Boot e API REST.
 
 🚀 Tecnologias Utilizadas
 
@@ -44,7 +44,7 @@ model       → Entidades JPA
 dto         → Objetos de transferência de dados
 
 
-Essa abordagem facilita manutenção, leitura do código e futuras evoluções.
+Essa abordagem facilita a manutenção, leitura do código e futuras evoluções.
 
 🛠️ Funcionalidades Implementadas
 🏎️ Equipes (Teams) — ✅ Concluído
@@ -95,19 +95,13 @@ DELETE /drivers/{id} → Remover piloto
 As requisições e respostas utilizam o formato JSON.
 
 📋 Como Executar o Projeto
-
-Clonar o repositório
-
+1️⃣ Clonar o repositório
 git clone https://github.com/seu-usuario/f1-management-api.git
 
-
-Acessar o diretório
-
+2️⃣ Acessar o diretório
 cd f1-management-api
 
-
-Executar o projeto
-
+3️⃣ Executar o projeto
 ./mvnw spring-boot:run
 
 
