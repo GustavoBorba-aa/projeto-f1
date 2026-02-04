@@ -34,13 +34,12 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    // Método corrigido para aceitar CreateCarDTO
     public Car updateCar(Long id, CreateCarDTO dto) {
         Car car = carRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Esse Carro não existe"));
 
-        // Busca a equipe pelo ID que vem no DTO
-        Team team = teamRepository.findById(dto.getTeamId())
+
+        Team team = teamRepository.findById(dto.getTeamId()) // Busca a equipe pelo ID que vem no DTO
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada!"));
 
         car.setModelCar(dto.getModelCar());

@@ -19,7 +19,6 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Atributos básicos da equipe de F1
     private String name;
     private String country;
     private String engine;
@@ -34,16 +33,13 @@ public class Team {
 
     /**
      * Construtor customizado para facilitar a criação de novos objetos.
-     * Nota: Não incluímos o 'id' aqui porque ele é gerado automaticamente pelo banco.
+     *
      */
     public Team(String name, String country, String engine) {
         this.name = name;
         this.country = country;
         this.engine = engine;
     }
-
-    // --- Métodos de Acesso (Getters e Setters) ---
-    // Necessários para que frameworks como o Hibernate consigam ler e injetar valores nos campos privados.
 
     public Long getId() {
         return id;

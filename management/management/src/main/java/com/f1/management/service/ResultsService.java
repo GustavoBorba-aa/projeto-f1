@@ -26,6 +26,12 @@ public class ResultsService {
 
 
     public Results saveFromDto(CreateResultsDTO dto) {
+        if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
+            throw new RuntimeException("Pontuação inválida...");
+        }
+        if (dto.getPosition() < 1 || dto.getPosition() > 22) {
+            throw new RuntimeException("Posição Inválida...Máximo 22 carros");
+        }
         Races race = racesRepository.findById(dto.getRaceId())
                 .orElseThrow(() -> new RuntimeException("Corrida não encontrada com ID: " + dto.getRaceId()));
 
@@ -46,6 +52,12 @@ public class ResultsService {
     }
 
     public Results updateResults(Long id, CreateResultsDTO dto) {
+        if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
+            throw new RuntimeException("Pontuação inválida...");
+        }
+        if (dto.getPosition() < 1 || dto.getPosition() > 22) {
+            throw new RuntimeException("Posição Inválida...Máximo 22 carros");
+        }
         Results results = resultsRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Erro: esse resultado não existe: "));
 
@@ -62,7 +74,6 @@ public class ResultsService {
         return resultsRepository.save(results);
     }
 
-    // Método de exclusão (DELETE)
     public void deleteResults(Long id) {
         if (!resultsRepository.existsById(id)) {
             throw new RuntimeException("Erro: esse ID não existe: ");

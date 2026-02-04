@@ -43,8 +43,7 @@ public class DriverService {
         Driver driver = driverRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Esse piloto não existe: " + id));
 
-        // Busca a nova equipe pelo ID do DTO
-        Team team = teamRepository.findById(dto.getTeamId())
+        Team team = teamRepository.findById(dto.getTeamId())         // Busca a nova equipe pelo ID do DTO
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
 
         driver.setName(dto.getName());
