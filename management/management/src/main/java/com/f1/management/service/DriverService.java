@@ -21,7 +21,18 @@ public class DriverService {
 
 
     public Driver saveFromDto(CreateDriverDTO dto) {
-        // Busca a equipe pelo ID (Long) que vem diretamente do DTO
+        if (dto.getName() == null || dto.getName().isBlank()) {
+            throw new RuntimeException("O nome do piloto não pode estar em branco.");
+        }
+        if (dto.getNationality() == null || dto.getNationality().isBlank()) {
+            throw new RuntimeException("A nacionalidade do piloto não pode estar em branco.");
+        }
+        if (dto.getNumber() == null){
+            throw new RuntimeException("O numero do piloto é obrigatório");
+        }
+        if (dto.getNumber() < 0 || dto.getNumber() > 99) {
+            throw new RuntimeException("O número deve ser entre 0 e 99 conforme o regulmento da FIA");
+        }
         Team team = teamRepository.findById(dto.getTeamId())
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada com ID: " + dto.getTeamId()));
 
@@ -45,6 +56,19 @@ public class DriverService {
 
         Team team = teamRepository.findById(dto.getTeamId())         // Busca a nova equipe pelo ID do DTO
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
+
+        if (dto.getName() == null || dto.getName().isBlank()) {
+            throw new RuntimeException("O nome do piloto não pode estar em branco.");
+        }
+        if (dto.getNationality() == null || dto.getNationality().isBlank()) {
+            throw new RuntimeException("A nacionalidade do piloto não pode estar em branco.");
+        }
+        if (dto.getNumber()== null){
+            throw new RuntimeException("O numero do piloto é obriagtório.");
+        }
+        if (dto.getNumber() < 0 || dto.getNumber() > 99) {
+            throw new RuntimeException("O número deve ser entre 0 e 99 conforme o regulmento da FIA");
+        }
 
         driver.setName(dto.getName());
         driver.setNationality(dto.getNationality());
