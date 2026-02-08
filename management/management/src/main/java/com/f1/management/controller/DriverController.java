@@ -3,6 +3,7 @@ package com.f1.management.controller;
 import com.f1.management.dto.CreateDriverDTO;
 import com.f1.management.model.Driver;
 import com.f1.management.service.DriverService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class DriverController {
     private DriverService driverService;
 
     @PostMapping
-    public ResponseEntity<Driver> create(@RequestBody CreateDriverDTO dto) {
+    public ResponseEntity<Driver> create(@RequestBody @Valid CreateDriverDTO dto) { //Valid = validar o objeto dto
         Driver savedDriver = driverService.saveFromDto(dto);
         return ResponseEntity.ok(savedDriver);
     }

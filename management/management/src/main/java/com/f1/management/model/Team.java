@@ -22,6 +22,9 @@ public class Team {
     private String name;
     private String country;
     private String engine;
+    private Integer foundationYear;
+    private String sedeDaEquipe;
+    private String chefeDeEquipe;
 
     /**
      * Construtor padrão (sem argumentos).
@@ -33,12 +36,14 @@ public class Team {
 
     /**
      * Construtor customizado para facilitar a criação de novos objetos.
-     *
      */
-    public Team(String name, String country, String engine) {
+    public Team(String name, String country, String engine, Integer foundationYear, String sedeDaEquipe, String chefeDeEquipe) {
         this.name = name;
         this.country = country;
         this.engine = engine;
+        this.foundationYear = foundationYear;
+        this.sedeDaEquipe = sedeDaEquipe;
+        this.chefeDeEquipe = chefeDeEquipe;
     }
 
     public Long getId() {
@@ -64,12 +69,35 @@ public class Team {
     public void setCountry(String country) {
         this.country = country;
     }
-
     public String getEngine() {
         return engine;
     }
 
     public void setEngine(String engine) {
         this.engine = engine;
+    }
+
+    public Integer getFoundationYear() {
+        return foundationYear;
+    }
+
+    public void setFoundationYear(Integer foundationYear) {
+        this.foundationYear = foundationYear;
+    }
+
+    public String getSedeDaEquipe() {
+        return sedeDaEquipe;
+    }
+
+    public void setSedeDaEquipe(String sedeDaEquipe) {
+        this.sedeDaEquipe = sedeDaEquipe;
+    }
+
+    public String getChefeDeEquipe() {
+        return chefeDeEquipe;
+    }
+
+    public void setChefeDeEquipe(String chefeDeEquipe) {
+        this.chefeDeEquipe = chefeDeEquipe;
     }
 }

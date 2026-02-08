@@ -19,7 +19,8 @@ public class TeamController {
     // Rota para cadastrar uma equipe (POST http://localhost:8080/teams)
     @PostMapping
     public ResponseEntity<Team> create(@RequestBody CreateTeamDTO dto) {
-        Team newTeam = new Team(dto.getName(), dto.getCountry(), dto.getEngine());
+        Team newTeam = new Team(dto.getName(), dto.getCountry(), dto.getEngine(), dto.getFoundationYear(),
+                dto.getSedeDaEquipe(), dto.getChefeDeEquipe());
         Team savedTeam = teamService.saveTeam(newTeam);
         return ResponseEntity.ok(savedTeam);
     }
@@ -32,7 +33,8 @@ public class TeamController {
     // --- UPDATE ---
     @PutMapping("/{id}")
     public ResponseEntity<Team> update(@PathVariable Long id, @RequestBody CreateTeamDTO dto) {
-        Team teamDetails = new Team(dto.getName(), dto.getCountry(), dto.getEngine());
+        Team teamDetails = new Team(dto.getName(), dto.getCountry(), dto.getEngine(), dto.getFoundationYear(),
+                dto.getSedeDaEquipe(), dto.getChefeDeEquipe());
         Team updatedTeam = teamService.updateTeam(id, teamDetails);
         return ResponseEntity.ok(updatedTeam);
     }

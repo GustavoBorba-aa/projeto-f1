@@ -7,10 +7,10 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String nationality;
+    private String category;
+    private String abreviacao;
 
 
     @Column(name = "number_car", nullable = false)
@@ -25,19 +25,23 @@ public class Driver {
     }
 
 
-    public Driver(Long id, String name, String nationality, int number, Team team) {
+    public Driver(Long id, String name, String nationality, int number, Team team, String category, String abreviacao) {
         this.id = id;
         this.name = name;
         this.nationality = nationality;
         this.number = number;
         this.team = team;
+        this.category = category;
+        this.abreviacao = abreviacao;
     }
 
-    public Driver(String name, String nationality, int number, Team team) {
+    public Driver(String name, String nationality, int number, Team team, String category, String abreviacao) {
         this.name = name;
         this.nationality = nationality;
         this.number = number;
         this.team = team;
+        this.category = category;
+        this.abreviacao = abreviacao;
     }
 
     public Long getId() {
@@ -79,5 +83,21 @@ public class Driver {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getAbreviacao() {
+        return abreviacao;
+    }
+
+    public void setAbreviacao(String abreviacao) {
+        this.abreviacao = abreviacao;
     }
 }
