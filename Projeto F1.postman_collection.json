@@ -1,0 +1,28 @@
+{
+  "info": {
+    "_postman_id": "1c4c60b3-b2e0-4d7a-a570-6b59ba8dd405",
+    "name": "Projeto F1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44698456",
+    "_collection_link": "https://go.postman.co/collection/44698456-1c4c60b3-b2e0-4d7a-a570-6b59ba8dd405?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "Team",
+          "item": []
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

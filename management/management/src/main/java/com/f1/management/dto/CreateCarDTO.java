@@ -1,34 +1,21 @@
 package com.f1.management.dto;
 
 import com.f1.management.model.Team;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateCarDTO {
 
+    @NotBlank(message = "O nome do modelo do carro é obrigatório")
     private String modelCar;
+    @NotNull(message = "O id da equipe não pode estar vazio")
     private Long teamId;
-
-    public CreateCarDTO() {
-
-    }
-
-    public CreateCarDTO(String modelCar, Long teamId) {
-        this.modelCar = modelCar;
-        this.teamId = teamId;
-    }
-
-    public String getModelCar() {
-        return modelCar;
-    }
-
-    public void setModelCar(String modelCar) {
-        this.modelCar = modelCar;
-    }
-
-    public Long getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
-    }
 }

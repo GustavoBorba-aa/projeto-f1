@@ -1,41 +1,25 @@
 package com.f1.management.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateRacesDTO {
+    @NotBlank(message = "O nome do circuto é obrigatório")
     private String nameCircuit;
+    @NotBlank(message = "O nome do Grande Prêmio é obrigatório")
     private String grandPrixName;
+    @NotNull(message = "A data da corrida é obrigatória")
+    @Future(message = "A data da corrida deve ser uma data futura")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate raceDate;
 
-    public CreateRacesDTO() {
-    }
-
-    public CreateRacesDTO(String nameCircuit, String grandPrixName, LocalDate raceDate) {
-        this.nameCircuit = nameCircuit;
-        this.grandPrixName = grandPrixName;
-        this.raceDate = raceDate;
-    }
-    public String getNameCircuit() {
-        return nameCircuit;
-    }
-
-    public void setNameCircuit(String nameCircuit) {
-        this.nameCircuit = nameCircuit;
-    }
-
-    public String getGrandPrixName() {
-        return grandPrixName;
-    }
-
-    public void setGrandPrixName(String grandPrixName) {
-        this.grandPrixName = grandPrixName;
-    }
-
-    public LocalDate getRaceDate() {
-        return raceDate;
-    }
-
-    public void setRaceDate(LocalDate raceDate) {
-        this.raceDate = raceDate;
-    }
 }
