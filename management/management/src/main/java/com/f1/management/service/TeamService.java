@@ -23,8 +23,6 @@ public class TeamService {
     private TeamRepository teamRepository;
 
     public Team saveTeam(Team team) {
-        validacoesServiceTeam(team);
-        validarFundationYear(team.getFoundationYear());
         return teamRepository.save(team);
     }
 
@@ -42,8 +40,6 @@ public class TeamService {
     public Team updateTeam(Long id, Team teamDetails) {
         Team team = teamRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada com o id: " + id));
-        validacoesServiceTeam(teamDetails);
-        validarFundationYear(teamDetails.getFoundationYear());
 
         team.setName(teamDetails.getName());
         team.setCountry(teamDetails.getCountry());
@@ -61,34 +57,5 @@ public class TeamService {
             throw new RuntimeException("Não é possível deletar: Equipe não encontrada.");
         }
         teamRepository.deleteById(id);
-    }
-    public void validacoesServiceTeam(Team teamDetails){
-        if (teamDetails.getName() == null || teamDetails.getName().isBlank()) {
-            throw new RuntimeException("O nome da EQUIPE não pode ser branco");
-        }
-        if (teamDetails.getCountry() == null || teamDetails.getCountry().isBlank()) {
-            throw new RuntimeException("O Páis de origem da equipe não pode estar vazio");
-        }
-        if (teamDetails.getCountry().length() < 2 || teamDetails.getCountry().length() > 20) {
-            throw new RuntimeException("O país deve ter entre 2 e 20 caracteres.");
-        }
-        if (teamDetails.getEngine() == null || teamDetails.getEngine().isBlank()) {
-            throw new RuntimeException("A fabricante do motor da equipe não pode está branco...");
-        }
-        if (teamDetails.getSedeDaEquipe() == null || teamDetails.getSedeDaEquipe().isBlank()){
-            throw new RuntimeException("A sede da EQUIPE(TEAM) não pode estar vazio.");
-        }
-        if (teamDetails.getChefeDeEquipe() == null || teamDetails.getChefeDeEquipe().isBlank()){
-            throw new RuntimeException("O chefe equipe(TEAM) não pode estar vazio.");
-        }
-    }
-
-    public void validarFundationYear(Integer year){
-        if (year == null) {
-            throw new RuntimeException("O ano de fundação é obrigatório.");
-        }
-        if (year < 1950 || year > 2026) {
-            throw new RuntimeException("Ano inválido! A F1 começou em 1950 e não prevemos o futuro além de 2026.");
-        }
     }
 }

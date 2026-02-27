@@ -1,8 +1,16 @@
 package com.f1.management.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Results {
 
     @Id
@@ -21,48 +29,4 @@ public class Results {
 
     private Integer position;
     private Double pointsEarned;
-
-    public Results() {
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Races getRace() {
-        return race;
-    }
-
-    public void setRace(Races race) {
-        this.race = race;
-    }
-
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public void setPosition(Integer position) {
-        this.position = position;
-    }
-
-    public Double getPointsEarned() {
-        return pointsEarned;
-    }
-
-    public void setPointsEarned(Double pointsEarned) {
-        this.pointsEarned = pointsEarned;
-    }
 }
