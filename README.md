@@ -16,7 +16,9 @@ Lombok: Utilizado em Models e DTOs para eliminar código boilerplate (Getters, S
 
 Bean Validation (Hibernate Validator): Validações rigorosas de entrada (ex: datas futuras, campos obrigatórios).
 
-Maven: Gerenciamento de dependências e build do projeto.
+Maven: Gerenciador de dependências e build do projeto.
+
+Docker: Gerenciamento de containers para o banco de dados.
 
 🏗️ Arquitetura do Sistema
 O projeto utiliza a Arquitetura em Camadas e o padrão DTO, visando a segurança e a separação de responsabilidades:
@@ -31,7 +33,7 @@ Model/Entity: Entidades JPA (Team, Driver, Car, Races, Results) que definem o es
 
 DTO (Data Transfer Object): Classes como CreateTeamDTO e CreateDriverDTO que garantem que apenas os dados necessários sejam trafegados, protegendo a integridade das entidades.
 
-Infra (Tratador de Erros): Centralização do tratamento de exceções (como erros de validação 400 ou 404).
+Infra (Tratador de Erros): Centralização do tratamento de exceções (como erros de validação 400 ou 404) para retornos JSON amigáveis.
 
 📊 Modelo de Dados e Relacionamentos
 Teams (1) ↔ (N) Drivers: Um time possui vários pilotos.
@@ -43,34 +45,37 @@ Races ↔ Results: Gerenciamento de resultados vinculados a Grandes Prêmios esp
 🏁 Funcionalidades Atuais
 [x] Gerenciamento de Equipes: Cadastro completo com validações de país e motor.
 
-[x] Controle de Pilotos: Vinculação obrigatória a uma equipe e controle de numeração.
+[x] Controle de Pilotos: Vinculação obrigatória a uma equipe e controle de numeração única.
 
 [x] Registro de Veículos: Mapeamento One-to-One entre carro e escuderia.
 
 [x] Calendário de Corridas: Cadastro de circuitos e datas (validando para evitar datas passadas).
 
-[x] Tratamento de Exceções: Retornos de erro amigáveis para o usuário da API.
+[x] Tratamento de Exceções: Retornos de erro padronizados para o usuário da API.
 
 🚀 Como Executar o Projeto
-Clonar o repositório:
-
+1. Clonar o repositório
 Bash
 git clone https://github.com/seu-usuario/f1-management-api.git
 cd f1-management-api
-Configurar o Banco de Dados (Docker):
-Certifique-se de que o Docker está em execução e inicie o banco de dados:
+2. Configurar o Banco de Dados (Docker)
+Certifique-se de que o Docker Desktop está em execução e inicie o container do banco de dados:
 
 Bash
 docker-compose up -d
-Executar a aplicação:
-Utilize o Maven para rodar o projeto:
+3. Executar a aplicação
+Utilize o Maven para baixar as dependências e rodar o projeto:
 
 Bash
 mvn spring-boot:run
-A API estará disponível em http://localhost:8080.
+A API estará disponível em: http://localhost:8080
 
-Testar com Postman:
-Envie um POST para /teams com o seguinte corpo JSON:
+4. Testar com Postman
+Para validar o funcionamento, envie um POST para o endpoint de equipes:
+
+URL: http://localhost:8080/teams
+
+Body (JSON):
 
 JSON
 {
