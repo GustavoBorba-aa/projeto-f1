@@ -59,6 +59,8 @@ git clone https://github.com/seu-usuario/f1-management-api.git
 cd f1-management-api
 ```
 
+---
+
 ### 2. Executar via Docker (Recomendado)
 
 Certifique-se de que o Docker está em execução. O comando abaixo sobe o banco de dados e a aplicação automaticamente:
@@ -94,16 +96,45 @@ mvn test
 
 ## 📮 Postman Collection
 
-Para testar os endpoints de forma rápida e prática:
+Para facilitar os testes dos endpoints da API, você pode utilizar a collection do Postman já preparada no projeto.
 
-1. Localize o arquivo em:  
-   `/docs/Projeto F1.postman_collection.json`
+### 📂 Localização
 
-2. No Postman, clique em **Import** e selecione o arquivo.
+O arquivo da collection está disponível em:
 
-3. Utilize os exemplos prontos.
+```
+/docs/Projeto F1.postman_collection.json
+```
 
-### 📌 Exemplo de JSON (POST /teams)
+---
+
+### 🚀 Como importar no Postman
+
+1. Abra o **Postman**
+2. Clique em **Import**
+3. Selecione **Upload Files**
+4. Escolha o arquivo:
+   ```
+   Projeto F1.postman_collection.json
+   ```
+5. Clique em **Import**
+
+---
+
+### ▶️ Como usar
+
+1. A collection aparecerá no menu lateral
+2. Escolha uma requisição (ex: `POST /teams`)
+3. Clique em **Send**
+
+⚠️ Certifique-se de que a API está rodando em:
+```
+http://localhost:8080
+```
+
+---
+
+### 📌 Exemplo de Body (POST /teams)
 
 ```json
 {
