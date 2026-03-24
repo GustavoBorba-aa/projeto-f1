@@ -12,7 +12,7 @@ Esta é uma API REST desenvolvida para gerenciar o ecossistema da Fórmula 1. O 
 * **Spring Boot 3.4**: Framework base para a criação da aplicação e inversão de controle.
 * **Spring Data JPA**: Mapeamento objeto-relacional (ORM) para persistência de dados.
 * **PostgreSQL**: Banco de dados relacional robusto para armazenamento de dados.
-* **Lombok**: Utilizado em **Models** e **DTOs** para eliminar código boilerplate (Getters, Setters).
+* **Lombok**: Utilizado em **Models** e **DTOs** para eliminar código boilerplate (Getters, Setters, Construtores).
 * **Bean Validation**: Validações rigorosas de entrada (ex: datas futuras, campos obrigatórios).
 * **Maven**: Gerenciador de dependências e build do projeto.
 * **Docker & Docker Compose**: Gerenciamento de containers para a aplicação e banco de dados.
@@ -55,39 +55,57 @@ O projeto utiliza a **Arquitetura em Camadas** e o padrão **DTO**, visando a se
 
 ### 1. Clonar o repositório
 ```bash
-git clone [https://github.com/seu-usuario/f1-management-api.git](https://github.com/seu-usuario/f1-management-api.git)
+git clone https://github.com/seu-usuario/f1-management-api.git
 cd f1-management-api
+```
 
-2. Executar via Docker (Recomendado)
-Certifique-se de que o Docker está em execução. O comando abaixo gera o pacote, constrói a imagem e sobe os serviços:
+### 2. Executar via Docker (Recomendado)
 
-Bash
-mvn clean package -DskipTests
+Certifique-se de que o Docker está em execução. O comando abaixo sobe o banco de dados e a aplicação automaticamente:
+
+```bash
 docker-compose up --build
-A API estará disponível em: http://localhost:8080
+```
 
-3. Executar via Maven (Local)
-Bash
+A API estará disponível em:  
+👉 http://localhost:8080
+
+---
+
+### 3. Executar via Maven (Local)
+
+Caso prefira rodar sem Docker (necessita PostgreSQL local configurado):
+
+```bash
 mvn spring-boot:run
+```
 
-🧪 Testes
+---
+
+## 🧪 Testes
+
 Para validar as regras de negócio e garantir que os controllers estão respondendo corretamente:
 
-Bash
+```bash
 mvn test
+```
 
-📮 Postman Collection
+---
+
+## 📮 Postman Collection
+
 Para testar os endpoints de forma rápida e prática:
 
-Localize o arquivo em: /docs/Projeto F1.postman_collection.json.
+1. Localize o arquivo em:  
+   `/docs/Projeto F1.postman_collection.json`
 
-No Postman, clique em Import e selecione o arquivo.
+2. No Postman, clique em **Import** e selecione o arquivo.
 
-Utilize os exemplos prontos para realizar os requests.
+3. Utilize os exemplos prontos.
 
-Exemplo de corpo JSON para o endpoint /teams:
+### 📌 Exemplo de JSON (POST /teams)
 
-JSON
+```json
 {
   "name": "Red Bull Racing",
   "country": "Áustria",
@@ -96,4 +114,10 @@ JSON
   "sedeDaEquipe": "Milton Keynes",
   "chefeDeEquipe": "Christian Horner"
 }
-Desenvolvido por [Gustavo Borba]
+```
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Gustavo Borba**
