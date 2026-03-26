@@ -1,6 +1,6 @@
 # 🏎️ F1 Management API
 
-> **Status do Projeto:** 🏗️ Em Desenvolvimento (Implementando Lógica de Campeonato e Integração de Endpoints)
+> **Status do Projeto:** 🚀 **CRUD de Equipes Finalizado** | 🏗️ Implementando Lógica de Pilotos e Carros
 
 Esta é uma API REST desenvolvida para gerenciar o ecossistema da Fórmula 1. O sistema organiza equipes, pilotos, carros e calendários de corridas, utilizando uma arquitetura robusta para garantir a integridade dos dados e a escalabilidade do sistema.
 
@@ -8,46 +8,36 @@ Esta é uma API REST desenvolvida para gerenciar o ecossistema da Fórmula 1. O 
 
 ## 🛠️ Tecnologias e Ferramentas
 
-* **Java 23**: Utilizando as funcionalidades mais recentes da linguagem.
-* **Spring Boot 3.4**: Framework base para a criação da aplicação e inversão de controle.
+* **Java 21/23**: Utilizando as funcionalidades mais recentes da linguagem.
+* **Spring Boot 3.4**: Framework base para a aplicação e inversão de controle.
 * **Spring Data JPA**: Mapeamento objeto-relacional (ORM) para persistência de dados.
-* **PostgreSQL**: Banco de dados relacional robusto para armazenamento de dados.
-* **Lombok**: Utilizado em **Models** e **DTOs** para eliminar código boilerplate (Getters, Setters, Construtores).
-* **Bean Validation**: Validações rigorosas de entrada (ex: datas futuras, campos obrigatórios).
+* **PostgreSQL**: Banco de dados relacional para armazenamento persistente.
+* **Lombok**: Utilizado em **Models** e **DTOs** para eliminar código boilerplate.
+* **Bean Validation**: Validações de entrada (ex: `@NotNull`, `@NotBlank`).
 * **Maven**: Gerenciador de dependências e build do projeto.
 * **Docker & Docker Compose**: Gerenciamento de containers para a aplicação e banco de dados.
-* **JUnit 5 & Mockito**: Ferramentas para testes unitários e de integração.
 
 ---
 
 ## 🏗️ Arquitetura do Sistema
 
-O projeto utiliza a **Arquitetura em Camadas** e o padrão **DTO**, visando a segurança e a separação de responsabilidades:
+O projeto utiliza a **Arquitetura em Camadas** e o padrão **DTO (Data Transfer Object)**, visando a separação de responsabilidades:
 
-* **Controller**: Porta de entrada da API. Recebe as requisições e utiliza `@Valid` para disparar as validações dos DTOs.
-* **Service**: Camada intermediária que contém a lógica de negócio e regras de validação antes de chegar ao banco.
-* **Repository**: Camada de persistência que utiliza *Derived Queries* e consultas personalizadas.
-* **Model/Entity**: Entidades JPA (`Team`, `Driver`, `Car`, `Races`, `Results`) que definem o esquema do banco de dados.
-* **DTO (Data Transfer Object)**: Classes de entrada que garantem a segurança dos dados trafegados.
-* **Infra (Tratador de Erros)**: Centralização do tratamento de exceções para retornos JSON amigáveis.
-
----
-
-## 📊 Modelo de Dados e Relacionamentos
-
-* **Teams (1) ↔ (N) Drivers**: Um time possui vários pilotos.
-* **Teams (1) ↔ (1) Car**: Um time gerencia um modelo de carro específico.
-* **Races ↔ Results**: Gerenciamento de resultados vinculados a Grandes Prêmios.
+* **Controller**: Porta de entrada da API. Gerencia os endpoints e valida as entradas.
+* **Service**: Camada de regras de negócio e comunicação com o repositório.
+* **Repository**: Interface de comunicação direta com o banco de dados via JPA.
+* **Model/Entity**: Entidades que representam as tabelas no banco de dados (`Team`, `Driver`, etc).
+* **DTO**: Garante a segurança e flexibilidade no tráfego de dados entre cliente e servidor.
 
 ---
 
 ## 🏁 Funcionalidades Atuais
 
-* [x] **Gerenciamento de Equipes**: Cadastro completo com validações de país e motor.
-* [x] **Controle de Pilotos**: Vinculação obrigatória a uma equipe e controle de numeração única.
-* [x] **Registro de Veículos**: Mapeamento One-to-One entre carro e escuderia.
-* [x] **Calendário de Corridas**: Cadastro de circuitos e datas (validando datas passadas).
-* [x] **Tratamento de Exceções**: Retornos de erro 400 e 404 padronizados.
+* [x] **Gerenciamento de Equipes**: Cadastro completo com validações (País, Motor, Sede, Chefe).
+* [x] **Persistência de Dados**: Integração total com PostgreSQL.
+* [x] **Tratamento de Erros**: Retornos de erro 400 e 404 padronizados via `TratadorDeErros`.
+* [ ] **Controle de Pilotos**: Vinculação a equipes (Em desenvolvimento).
+* [ ] **Registro de Veículos**: Mapeamento de carros por escuderia (Em desenvolvimento).
 
 ---
 
@@ -55,15 +45,15 @@ O projeto utiliza a **Arquitetura em Camadas** e o padrão **DTO**, visando a se
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/f1-management-api.git
-cd f1-management-api
+git clone https://github.com/GustavoBorba-aa/projeto-f1.git
+cd projeto-f1
 ```
 
 ---
 
 ### 2. Executar via Docker (Recomendado)
 
-Certifique-se de que o Docker está em execução. O comando abaixo sobe o banco de dados e a aplicação automaticamente:
+Certifique-se de que o Docker está em execução e execute:
 
 ```bash
 docker-compose up --build
@@ -76,7 +66,7 @@ A API estará disponível em:
 
 ### 3. Executar via Maven (Local)
 
-Caso prefira rodar sem Docker (necessita PostgreSQL local configurado):
+Caso prefira rodar localmente (necessita PostgreSQL configurado no `application.properties`):
 
 ```bash
 mvn spring-boot:run
@@ -84,47 +74,36 @@ mvn spring-boot:run
 
 ---
 
-## 🧪 Testes
-
-Para validar as regras de negócio e garantir que os controllers estão respondendo corretamente:
-
-```bash
-mvn test
-```
-
----
-
 ## 📮 Postman Collection
 
-Para facilitar os testes dos endpoints da API, você pode utilizar a collection do Postman já preparada no projeto.
+Para facilitar os testes, utilize a collection do Postman incluída no repositório.
 
 ### 📂 Localização
 
-O arquivo da collection está disponível em:
+O arquivo está localizado em:
 
 ```
-/docs/Projeto F1.postman_collection.json
+./docs/Projeto F1.postman_collection.json
 ```
 
 ---
 
-### 🚀 Como importar no Postman
+### 🚀 Como importar
 
 1. Abra o **Postman**
 2. Clique em **Import**
-3. Selecione **Upload Files**
-4. Escolha o arquivo:
+3. Arraste o arquivo:
    ```
    Projeto F1.postman_collection.json
    ```
-5. Clique em **Import**
+4. Clique em **Import**
 
 ---
 
 ### ▶️ Como usar
 
 1. A collection aparecerá no menu lateral
-2. Escolha uma requisição (ex: `POST /teams`)
+2. Selecione um endpoint (ex: `POST /teams`)
 3. Clique em **Send**
 
 ⚠️ Certifique-se de que a API está rodando em:
@@ -134,7 +113,7 @@ http://localhost:8080
 
 ---
 
-### 📌 Exemplo de Body (POST /teams)
+### 📌 Exemplo de JSON (POST /teams)
 
 ```json
 {
