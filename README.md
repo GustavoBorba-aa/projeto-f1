@@ -1,7 +1,5 @@
 # 🏎️ F1 Management API
 
-> **Status do Projeto:** 🚀 **CRUD de Equipes Finalizado** | 🏗️ Implementando Lógica de Pilotos e Carros
-
 Esta é uma API REST desenvolvida para gerenciar o ecossistema da Fórmula 1. O sistema organiza equipes, pilotos, carros e calendários de corridas, utilizando uma arquitetura robusta para garantir a integridade dos dados e a escalabilidade do sistema.
 
 ---
