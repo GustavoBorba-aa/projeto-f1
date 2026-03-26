@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +28,10 @@ public class Races {
     private String nameCircuit;
     private String grandPrixName;
     private LocalDate raceDate;
+
+    public Races(String nameCircuit, String grandPrixName, LocalDate raceDate) {
+        this.nameCircuit = nameCircuit;
+        this.grandPrixName = grandPrixName;
+        this.raceDate = raceDate;
+    }
 }
