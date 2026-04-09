@@ -22,9 +22,6 @@ public class CarService {
     public Car saveCar(CreateCarDTO dto) {
         Team team = teamRepository.findById(dto.getTeamId())
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada!"));
-        if (dto.getModelCar() == null || dto.getModelCar().isBlank()) {
-            throw new RuntimeException("O modelo do carro deve ser informado.");
-        }
         Car car = new Car();
         car.setModelCar(dto.getModelCar());
         car.setTeam(team);
@@ -41,12 +38,8 @@ public class CarService {
                 new RuntimeException("Esse Carro não existe"));
 
 
-        Team team = teamRepository.findById(dto.getTeamId()) // Busca a equipe pelo ID que vem no DTO
+        Team team = teamRepository.findById(dto.getTeamId())
                 .orElseThrow(() -> new RuntimeException("Equipe não encontrada!"));
-
-        if (dto.getModelCar() == null || dto.getModelCar().isBlank()) {
-            throw new RuntimeException("O modelo do carro deve ser informado.");
-        }
 
         car.setModelCar(dto.getModelCar());
         car.setTeam(team);

@@ -26,12 +26,6 @@ public class ResultsService {
 
 
     public Results saveFromDto(CreateResultDTO dto) {
-        if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
-            throw new RuntimeException("Pontuação inválida...");
-        }
-        if (dto.getPosition() < 1 || dto.getPosition() > 22) {
-            throw new RuntimeException("Posição Inválida...Máximo 22 carros");
-        }
         Races race = racesRepository.findById(dto.getRaceId())
                 .orElseThrow(() -> new RuntimeException("Corrida não encontrada com ID: " + dto.getRaceId()));
 
@@ -52,12 +46,6 @@ public class ResultsService {
     }
 
     public Results updateResults(Long id, CreateResultDTO dto) {
-        if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
-            throw new RuntimeException("Pontuação inválida...");
-        }
-        if (dto.getPosition() < 1 || dto.getPosition() > 22) {
-            throw new RuntimeException("Posição Inválida...Máximo 22 carros");
-        }
         Results results = resultsRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Erro: esse resultado não existe: "));
 
