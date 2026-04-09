@@ -17,12 +17,10 @@ public class Results {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Muitos resultados pertencem a uma única Corrida
     @ManyToOne
     @JoinColumn(name = "race_id")
     private Races race;
 
-    // Muitos resultados podem pertencer a um único Piloto
     @ManyToOne
     @JoinColumn(name = "driver_id")
     private Driver driver;

@@ -1,6 +1,6 @@
 package com.f1.management.controller;
 
-import com.f1.management.dto.CreateResultsDTO;
+import com.f1.management.dto.CreateResultDTO;
 import com.f1.management.model.Results;
 import com.f1.management.service.ResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class ResultsController {
     private ResultsService resultsService;
 
     @PostMapping
-    public ResponseEntity<Results> create(@RequestBody CreateResultsDTO dto) {
+    public ResponseEntity<Results> create(@RequestBody CreateResultDTO dto) {
         Results savedResults = resultsService.saveFromDto(dto);
         return ResponseEntity.ok(savedResults);
     }
@@ -28,7 +28,7 @@ public class ResultsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Results> update(@PathVariable Long id, @RequestBody CreateResultsDTO dto) {
+    public ResponseEntity<Results> update(@PathVariable Long id, @RequestBody CreateResultDTO dto) {
         Results updateResults = resultsService.updateResults(id, dto);
         return ResponseEntity.noContent().build();
     }

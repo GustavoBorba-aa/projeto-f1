@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateResultsDTO {
+public class CreateResultDTO {
 
     @NotNull(message = "O ID da corrida é obrigatório")
     private Long raceId;

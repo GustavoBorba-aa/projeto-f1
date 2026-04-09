@@ -1,6 +1,6 @@
 package com.f1.management.service;
 
-import com.f1.management.dto.CreateResultsDTO;
+import com.f1.management.dto.CreateResultDTO;
 import com.f1.management.model.Driver;
 import com.f1.management.model.Races;
 import com.f1.management.model.Results;
@@ -25,7 +25,7 @@ public class ResultsService {
     private DriverRepository driverRepository;
 
 
-    public Results saveFromDto(CreateResultsDTO dto) {
+    public Results saveFromDto(CreateResultDTO dto) {
         if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
             throw new RuntimeException("Pontuação inválida...");
         }
@@ -51,7 +51,7 @@ public class ResultsService {
         return resultsRepository.findAll();
     }
 
-    public Results updateResults(Long id, CreateResultsDTO dto) {
+    public Results updateResults(Long id, CreateResultDTO dto) {
         if (dto.getPointsEarned() < 0 || dto.getPointsEarned() > 25) {
             throw new RuntimeException("Pontuação inválida...");
         }

@@ -1,6 +1,6 @@
 package com.f1.management.service;
 
-import com.f1.management.dto.CreateRacesDTO;
+import com.f1.management.dto.CreateRaceDTO;
 import com.f1.management.model.Races;
 import com.f1.management.repository.RacesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class RaceService {
     @Autowired
     private RacesRepository racesRepository;
 
-    public Races saveRaces(CreateRacesDTO dto) {
+    public Races saveRaces(CreateRaceDTO dto) {
         Races races = new Races(
                 dto.getNameCircuit(),
                 dto.getGrandPrixName(),
@@ -27,7 +27,7 @@ public class RaceService {
         return racesRepository.findAll();
     }
 
-    public Races updateRaces(Long id, CreateRacesDTO dto) {
+    public Races updateRaces(Long id, CreateRaceDTO dto) {
         Races races = racesRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Erro: essa corrida não existe: "));
 

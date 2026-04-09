@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateRacesDTO {
-    @NotBlank(message = "O nome do circuto é obrigatório")
+public class CreateRaceDTO {
+    @NotBlank(message = "O nome do circuito é obrigatório")
     private String nameCircuit;
     @NotBlank(message = "O nome do Grande Prêmio é obrigatório")
     private String grandPrixName;

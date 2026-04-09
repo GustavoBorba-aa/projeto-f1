@@ -1,6 +1,5 @@
 package com.f1.management.dto;
 
-import com.f1.management.model.Team;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

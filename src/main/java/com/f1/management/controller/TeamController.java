@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/teams") // Todas as rotas aqui começam com /teams
+@RequestMapping("/teams")
 public class TeamController {
 
     @Autowired
     private TeamService teamService;
 
-    // Rota para cadastrar uma equipe (POST http://localhost:8080/teams)
     @PostMapping
     public ResponseEntity<Team> create(@RequestBody CreateTeamDTO dto) {
         Team newTeam = new Team(null, dto.getName(), dto.getCountry(), dto.getEngine(), dto.getFoundationYear(),
@@ -25,12 +24,12 @@ public class TeamController {
         return ResponseEntity.ok(savedTeam);
     }
 
-    // Rota para listar equipes (GET http://localhost:8080/teams)
     @GetMapping
     public ResponseEntity<List<Team>> listAll() {
         return ResponseEntity.ok(teamService.getAllTeams());
     }
-    // --- UPDATE ---
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Team> update(@PathVariable Long id, @RequestBody CreateTeamDTO dto) {
         Team teamDetails = new Team(null,dto.getName(), dto.getCountry(), dto.getEngine(), dto.getFoundationYear(),
@@ -39,8 +38,7 @@ public class TeamController {
         return ResponseEntity.ok(updatedTeam);
     }
 
-    // --- DELETE ---
-    @DeleteMapping("/{id}") // A URL será /teams/1
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         teamService.deleteTeam(id);
         return ResponseEntity.noContent().build();
