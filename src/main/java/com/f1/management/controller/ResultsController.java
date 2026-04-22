@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/results") // Segue o padrão /teams
+@RequestMapping("/results")
 public class ResultsController {
 
     @Autowired

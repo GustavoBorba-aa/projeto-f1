@@ -1,6 +1,6 @@
-package com.f1.management.controller; // Define o endereço (pacote) onde este arquivo mora.
+package com.f1.management.controller;
 
-// Importações: Trazem as ferramentas e classes necessárias de outros lugares do projeto.
+
 import com.f1.management.dto.CreateCarDTO;
 import com.f1.management.model.Car;
 import com.f1.management.service.CarService;
@@ -27,7 +27,7 @@ public class CarController {
         return ResponseEntity.ok(carService.findAll());
     }
 
-    @PutMapping("{id}") // O {id} na URL (ex: /car/1) identifica qual carro será alterado.
+    @PutMapping("{id}")
     public ResponseEntity<Car> update(@PathVariable Long id, @RequestBody CreateCarDTO dto){
         Car updateCar = carService.updateCar(id, dto);
 

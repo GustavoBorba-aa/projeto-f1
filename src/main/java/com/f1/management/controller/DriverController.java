@@ -18,7 +18,7 @@ public class DriverController {
     private DriverService driverService;
 
     @PostMapping
-    public ResponseEntity<Driver> create(@RequestBody @Valid CreateDriverDTO dto) { //Valid = validar o objeto dto
+    public ResponseEntity<Driver> create(@RequestBody @Valid CreateDriverDTO dto) {
         Driver savedDriver = driverService.saveFromDto(dto);
         return ResponseEntity.ok(savedDriver);
     }
